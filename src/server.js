@@ -4,7 +4,8 @@ import { connectDB, disconnectDB} from './config/db.js';
 
 //Import routes
 import watchlistRoutes from "./routes/watchlist_routes.js";
-import authRoutes from "./routes/auth_routes.js"
+import authRoutes from "./routes/auth_routes.js";
+import movieRoutes from "./routes/movie_route.js";
 
 config();
 connectDB();
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use("/movies", movieRoutes);
 app.use("/watchlist", watchlistRoutes);
 app.use("/auth", authRoutes);
 
